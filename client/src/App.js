@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
-import Parallax from "./components/Parallax";
+import Home from "./pages/Home";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Parallax/>
-      </div>
-    );
-  }
-}
+
+const App = () => (
+ <Router>
+    <div className="wrap">
+      <Route exact path="/" component={Home}/>
+    </div>
+  </Router>
+)
 
 export default App;
