@@ -3,6 +3,9 @@ import Parallax from "./../../components/Parallax";
 import Results from "./../../components/Results";
 import Form from "./../../components/Form";
 import API from "./../../utils/API";
+import Moment from "moment";
+import { Link } from "react-router-dom";
+
 class Home extends Component {
   // Setting the initial values of this.state.topic, this.state.startYear and this.endYear
   state = {
@@ -32,7 +35,7 @@ class Home extends Component {
   };
 
   searchArticles = (topic, startYear, endYear) => {
-    console.log("load serticles again");
+    console.log("load articles again");
     API.search(topic, startYear, endYear)
         .then(res=>
         // console.log(res.data.response.docs))
@@ -42,6 +45,23 @@ class Home extends Component {
     )
   };
 
+  saveArticle = (event) => {
+    const index = event.target.id;
+    console.log(index);
+    
+    const pickedA = this.state.articles[index];
+    const object = {
+      title: pickedA.headline.main,
+      byline: pickedA.byline.original,
+      pubDate: pickedA.pub_date,
+      link: pickedA.web_url
+    }
+    API.save(object)
+      .then(res=> console.log("saved"))
+      .catch(err=> console.log(err));
+    
+    console.log(JSON.stringify(object));
+  }
 
 
     render(){
@@ -64,8 +84,9 @@ class Home extends Component {
                 id={index}
                 headline={article.headline.main}
                 pTag={article.byline.original}
-                pubDate = {article.pub_date}
+                pubDate = {Moment(article.pub_date, "YYYY-MM-DD HH:mm Z").format("lll")}
                 link={article.web_url}
+                saveArticle = {this.saveArticle}
                 />
             )}
             </div>

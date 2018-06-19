@@ -5,6 +5,18 @@ const articleSchema = new Schema({
   title: { 
       type: String, 
       required: true
+  },
+  byline: {
+    type: String,
+    required: true
+  },
+  pubDate: {
+    type: String,
+    required: true
+  },
+  link: {
+    type: String,
+    required: true
   }
 });
 
