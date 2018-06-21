@@ -11,5 +11,14 @@ export default {
 //saving article to database
  save: function(articleObject) {
     return axios.post("/api/articles", articleObject);
+ },
+
+ loadArticles: function(){
+     console.log("utils works");
+     return axios.get("/api/articles");
+ },
+
+ deleteArticle: function(id){
+     return axios.put("/api/articles/"+id);
  }
 }
