@@ -10,7 +10,7 @@ const Results = props => (
             <h5 className="articleTitle">{props.headline}</h5>
             <p className="text-flow articleByline">{props.pTag}</p>
             <p className="articleDate">{props.pubDate}</p>
-            <p>Read article <a href={props.link} target="_blank">here</a><a onClick={props.saveArticle} id={props.id} className="btn articleBtn right">Save</a></p>
+            <p>Read article <a href={props.link} target="_blank">here</a><a onClick={props.btnAction} id={props.id} className="btn articleBtn right">{props.btnText}</a></p>
         </div>
     </div>
 );

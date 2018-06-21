@@ -1,8 +1,8 @@
 import React from "react";
 
-const Parallax = () => (
+const Parallax = props => (
     <div className="parallax">
-        <img alt="nytimes building" src="./images/nytimes.jpg"/>
+        <img alt="nytimes building" src={props.imgsrc}/>
     </div>
 )
 

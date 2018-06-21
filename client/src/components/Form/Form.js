@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Form.css";
 
 const Form =props=> (
-    <div className="row">
+    <div className="row" id="formDiv">
         {/* <p>Topic: {this.state.topic}</p>
         <p>Start Year: {this.state.startYear}</p>
         <p>End Year: {this.state.endYear}</p> */}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Header from "./../../components/Header";
 import Parallax from "./../../components/Parallax";
 import Results from "./../../components/Results";
 import Form from "./../../components/Form";
 import API from "./../../utils/API";
 import Moment from "moment";
 import { Link } from "react-router-dom";
+
 
 class Home extends Component {
   // Setting the initial values of this.state.topic, this.state.startYear and this.endYear
@@ -67,8 +69,11 @@ class Home extends Component {
     render(){
     return (
          <div>
+            <Header/>
             <div className="parallax-container">
-                <Parallax/>
+                <Parallax
+                imgsrc="./images/nytimes.jpg"
+                />
                 <Form
                 handleFormSubmit = {this.handleFormSubmit}
                 handleInputChange = {this.handleInputChange}
@@ -86,7 +91,8 @@ class Home extends Component {
                 pTag={article.byline.original}
                 pubDate = {Moment(article.pub_date, "YYYY-MM-DD HH:mm Z").format("lll")}
                 link={article.web_url}
-                saveArticle = {this.saveArticle}
+                btnAction = {this.saveArticle}
+                btnText = "Save"
                 />
             )}
             </div>
