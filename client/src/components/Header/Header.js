@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = () => (
-    <nav className="z-depth-5">
+    <nav className="z-depth-5 teal lighten-2">
     <div className="nav-wrapper">
       <a href="#" className="brand-logo right">NYT Search</a>
       <ul id="nav-mobile" className="left">

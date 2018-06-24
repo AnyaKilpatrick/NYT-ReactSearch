@@ -5,7 +5,6 @@ import API from "./../../utils/API";
 import Moment from "moment";
 import { Link } from "react-router-dom";
 
-
 class Saved extends Component {
     state = {
         savedArticles: []

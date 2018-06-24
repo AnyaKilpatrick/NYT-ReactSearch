@@ -6,7 +6,7 @@ const Form =props=> (
         {/* <p>Topic: {this.state.topic}</p>
         <p>Start Year: {this.state.startYear}</p>
         <p>End Year: {this.state.endYear}</p> */}
-        <form className="col s4 offset-s4">
+        <form className="col s8 offset-s2  m4 offset-m4 lg4 offset-lg4">
             <div className="row">
                 <div className="input-field col s12">
                 <input 
