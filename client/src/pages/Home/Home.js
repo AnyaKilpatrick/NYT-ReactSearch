@@ -31,16 +31,17 @@ class Home extends Component {
   // When the form is submitted, prevent the default event
   handleFormSubmit = event => {
     event.preventDefault();
-    alert(`Topic: ${this.state.topic}\nstartYear: ${this.state.startYear}\nendYear: ${this.state.endYear}`);
+    // alert(`Topic: ${this.state.topic}\nstartYear: ${this.state.startYear}\nendYear: ${this.state.endYear}`);
     this.setState({ topic: "", startYear: "", endYear: "" });
     this.searchArticles(this.state.topic, this.state.startYear, this.state.endYear);
+    console.log(this.state.topic+ " "+ this.state.startYear + " " + this.state.endYear);
   };
 
   searchArticles = (topic, startYear, endYear) => {
     console.log("load articles again");
     API.search(topic, startYear, endYear)
         .then(res=>
-        // console.log(res.data.response.docs))
+        // console.log((res.data.response.docs)))
         this.setState({articles: res.data.response.docs}))
         .catch(err=>
         console.log(err)
@@ -65,7 +66,14 @@ class Home extends Component {
     console.log(JSON.stringify(object));
   }
 
-
+  checkByline = (article) => {
+    if(article.byline === undefined){
+      return "Unknown"
+    }else {
+      console.log(article + ".........." + article.byline)
+      return article.byline.original
+    }
+  }
     render(){
     return (
          <div>
@@ -88,7 +96,7 @@ class Home extends Component {
                 key={index}
                 id={index}
                 headline={article.headline.main}
-                pTag={article.byline.original}
+                pTag={this.checkByline(article)}
                 pubDate = {Moment(article.pub_date, "YYYY-MM-DD HH:mm Z").format("lll")}
                 link={article.web_url}
                 btnAction = {this.saveArticle}
